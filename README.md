@@ -9,7 +9,7 @@ The implementation is inspired by:
 > Cognitive Psychology, 121, 101292.
 
 ---
-## double Responses in cognitive Test
+## Double Responses in cognitive Test
 
 In many cognitive experiments, participants are asked to make rapid decisions under time pressure. These are often called **speeded decision tasks**.
 
@@ -34,7 +34,7 @@ This is called a **double response**.
 
 For example, in a lexical decision task, a participant may first classify a stimulus as **WORD** and then rapidly switch to **NON-WORD**.
 
-![Example of a double response](Double%20Response(1).png)
+![Example of a double response](Double%20Response.png)
 
 Instead of treating the second response only as accidental noise, double responses may provide additional information about uncertainty, conflict, or post-decision processing.
 
@@ -55,7 +55,7 @@ The accumulator that reaches the threshold first determines the initial response
 
 However, evidence accumulation in the competing accumulator can continue after the first threshold crossing. If the losing accumulator also reaches the threshold within the 250 ms post-response window, the trial is classified as a double response.
 
-![Evidence accumulation example](EAM(4).png)
+![Evidence accumulation example](EAM.png)
 
 In the example above:
 
