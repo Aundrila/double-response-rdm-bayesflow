@@ -9,6 +9,64 @@ The implementation is inspired by:
 > Cognitive Psychology, 121, 101292.
 
 ---
+## double Responses in cognitive Test
+
+In many cognitive experiments, participants are asked to make rapid decisions under time pressure. These are often called **speeded decision tasks**.
+
+A typical example is a lexical decision task, where a participant has to decide whether a presented letter string is a real word or a non-word.
+
+Researchers usually analyze two main behavioral observations:
+
+- the **choice** made by the participant
+- the **response time (RT)** required to make that choice
+
+Evidence Accumulation Models (EAMs) provide a mathematical framework for describing how such decisions develop over time.
+
+The basic idea is that noisy evidence is gradually accumulated for the available response alternatives. A response is produced when one of the evidence processes reaches a predefined decision threshold.
+
+---
+
+## Double Responses
+
+In some trials, the participant does not produce only one response. Instead, a first response is followed very quickly by the opposite response.
+
+This is called a **double response**.
+
+For example, in a lexical decision task, a participant may first classify a stimulus as **WORD** and then rapidly switch to **NON-WORD**.
+
+![Example of a double response](Double%20Response(1).png)
+
+Instead of treating the second response only as accidental noise, double responses may provide additional information about uncertainty, conflict, or post-decision processing.
+
+In this project, a second opposite response is considered a double response when it occurs within **250 ms** after the first response.
+
+---
+
+## Evidence Accumulation Interpretation
+
+The Racing Diffusion Model used in this project contains two competing evidence accumulators:
+
+- one accumulator supports the **correct response**
+- one accumulator supports the **error response**
+
+Both accumulators independently accumulate noisy evidence toward the same decision threshold.
+
+The accumulator that reaches the threshold first determines the initial response.
+
+However, evidence accumulation in the competing accumulator can continue after the first threshold crossing. If the losing accumulator also reaches the threshold within the 250 ms post-response window, the trial is classified as a double response.
+
+![Evidence accumulation example](EAM(4).png)
+
+In the example above:
+
+- the correct accumulator reaches the threshold first and produces the first response
+- the error accumulator continues accumulating evidence
+- the error accumulator reaches the threshold shortly afterwards
+- because the second threshold crossing occurs within 250 ms, a double response is recorded
+
+The time between the two threshold crossings is the **double-response latency (DRT)**.
+
+This additional information may help reveal aspects of the competing evidence process that are not fully captured by the first response and response time alone.
 
 ## Research Question
 
