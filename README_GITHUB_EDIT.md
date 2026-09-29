@@ -2,10 +2,6 @@
 
 **Simulation-based parameter recovery for double responses in a Racing Diffusion Model using BayesFlow.**
 
-This repository contains a focused implementation developed for the **Simulation-Based Inference** course at **TU Dortmund University**.
-
-The project investigates whether double responses in speeded decision tasks provide additional information about the underlying evidence-accumulation process.
-
 The implementation is inspired by:
 
 > Evans, N. J., Dutilh, G., Wagenmakers, E.-J., & van der Maas, H. L. J. (2020).  
@@ -332,31 +328,9 @@ The notebook provides two computation profiles.
 
 `FAST_MODE=True` is intended for debugging and verifying that the complete workflow runs successfully.
 
-| Setting | Value |
-|---|---:|
-| Trials per dataset | 300 |
-| Training datasets | 300 |
-| Test datasets | 40 |
-| Epochs per estimator | 5 |
-| Batch size | 64 |
-| Posterior samples per test dataset | 250 |
-| Double-response window | 0.250 s |
-
-Results obtained with this configuration should be treated as **illustrative development results**.
-
 ## Full Mode
 
 `FAST_MODE=False` uses a larger simulation bank and longer neural-network training.
-
-| Setting | Value |
-|---|---:|
-| Trials per dataset | 2,000 |
-| Training datasets | 5,000 |
-| Test datasets | 250 |
-| Epochs per estimator | 150 |
-| Batch size | 128 |
-| Posterior samples per test dataset | 2,000 |
-| Double-response window | 0.250 s |
 
 The full configuration is substantially more computationally expensive.
 
