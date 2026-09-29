@@ -282,39 +282,11 @@ They differ only in the observed trial-level information passed to the summary n
 
 Each simulated dataset is an exchangeable set of trials. A **DeepSet** is therefore used to learn a permutation-invariant representation of the dataset.
 
-## Summary Network
 
-```python
-bf.networks.DeepSet(
-    summary_dim=16,
-    embed_dim=32,
-    depth=2,
-    mlp_widths=(32,),
-    dropout=0.0,
-)
-```
 
 ## Posterior Network
 
 The posterior estimator uses an affine coupling flow:
-
-```python
-bf.networks.CouplingFlow(
-    transform="affine",
-    depth=4,
-    subnet_kwargs={
-        "widths": (64, 64),
-        "dropout": 0.0,
-    },
-)
-```
-
-BayesFlow standardizes both:
-
-```text
-inference_variables
-summary_variables
-```
 
 The implementation uses **learned trial-level summaries** rather than manually specified summary-statistic vectors.
 
@@ -499,76 +471,6 @@ This section should be interpreted as an **illustration of amortized inference**
 
 ---
 
-# Installation
-
-The notebook uses **BayesFlow 2** with the **JAX Keras backend**.
-
-```bash
-pip install \
-    "bayesflow==2.0.12" \
-    "keras>=3.12,<4" \
-    "jax[cpu]>=0.5" \
-    "rdata>=1.0" \
-    "numpy>=2.2,<3" \
-    "pandas>=2.3,<4" \
-    "scipy>=1.15,<2" \
-    "matplotlib>=3.10,<4"
-```
-
-The backend is configured before importing Keras or BayesFlow:
-
-```python
-import os
-
-os.environ["KERAS_BACKEND"] = "jax"
-```
-
----
-
-# Running the Notebook
-
-1. Clone the repository.
-2. Create and activate a Python environment.
-3. Install the dependencies.
-4. Open `bayesflow_double_response_parameter_recovery.ipynb`.
-5. Set `FAST_MODE=True` for a quick development run or `FAST_MODE=False` for the larger recovery experiment.
-6. Run the notebook from top to bottom.
-7. Use the optional empirical-data section only if the RData file is available.
-
----
-
-# Reproducibility
-
-The notebook uses:
-
-```python
-SEED = 20260717
-```
-
-Exact neural-network results may still vary across hardware and software versions.
-
-For a stronger recovery study, repeated training with several random seeds is recommended.
-
----
-
-# Repository Structure
-
-```text
-double-response-rdm-bayesflow/
-│
-├── bayesflow_double_response_parameter_recovery.ipynb
-├── README.md
-├── requirements.txt
-│
-└── data/
-    └── parsedData_doubleResp.Rdata    # optional
-```
-
-The RData file is not required for the synthetic parameter-recovery experiment.
-
-Only include the empirical dataset in a public repository if redistribution is permitted.
-
----
 
 # Scope and Limitations
 
@@ -593,22 +495,6 @@ Additional limitations include:
 
 ---
 
-# Possible Extensions
-
-Possible next steps include:
-
-1. increase the number of simulations, trials, epochs, and posterior draws
-2. repeat neural-network training using multiple random seeds
-3. compare parameter recovery across different trial counts
-4. perform simulation-based calibration
-5. add posterior predictive checks
-6. use participant-calibrated priors
-7. include between-trial drift or non-decision-time variability
-8. extend the independent RDM with a competitive mechanism such as lateral inhibition
-9. compare multiple evidence-accumulation models
-10. perform a more complete empirical analysis
-
----
 
 # Final Project Statement
 
@@ -657,11 +543,3 @@ BayesFlow documentation:
 https://bayesflow.org/
 
 ---
-
-# Contributors
-
-- Ahmed Arian Sajid
-- Aundrila Acharjee
-- Sabrina Sultana
-
-**TU Dortmund University — Simulation-Based Inference**
